@@ -5,7 +5,7 @@
     </div>
     <v-card class='info-box'>
       <v-card-title>
-        <img src='valorant.png' style='padding-right: 10px;' /><h1>Valorant Player History</h1>
+        <img :src='`${publicPath}valorant.png`' style='padding-right: 10px;' /><h1>Valorant Player History</h1>
         <vue-kofi uid='preetham' />
       </v-card-title>
       <v-autocomplete
@@ -27,7 +27,7 @@
       </v-card-text>
     </v-card>
     <v-card :class="{'player-history': true, 'no-selection': selected < 0}">
-      <v-card-title v-if='search'><h1>{{search}}</h1><a :href='`https://liquipedia.net/valorant/${search}`' target='_blank' style='right: 20px; position: absolute;'><img src='liquipedia.png' height='60px' /></a></v-card-title>
+      <v-card-title v-if='search'><h1>{{search}}</h1><a :href='`https://liquipedia.net/valorant/${search}`' target='_blank' style='right: 20px; position: absolute;'><img :src='`${publicPath}liquipedia.png`' height='60px' /></a></v-card-title>
       <v-card-title v-else><h1>No player selected</h1></v-card-title>
       <v-card-text v-if='selected >= 0'>
         <h3>Transfers</h3>
@@ -62,6 +62,8 @@ export default {
   },
   data () {
     return {
+      publicPath: process.env.VUE_APP_PUBLIC_PATH,
+
       nodes: [],
       links: [],
       options: {

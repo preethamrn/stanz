@@ -15,7 +15,7 @@
               >
                 <v-item v-slot:default='{ active, toggle }' :value='mapData.name'>
                   <v-img
-                    :src='mapData.img'
+                    :src='publicPath + mapData.img'
                     :aspect-ratio="16/9"
                     height='150'
                     class='pa-2'
@@ -89,6 +89,8 @@ export default {
   },
   data () {
     return {
+      publicPath: process.env.VUE_APP_PUBLIC_PATH,
+
       map: 'Ascent',
       vodURL: '',
       teams: [{team: '', players: [{}, {}, {}, {}, {}]}, {team: '', players: [{}, {}, {}, {}, {}]}], // list of player objects {name, agent}

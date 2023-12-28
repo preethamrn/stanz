@@ -9,7 +9,7 @@
           v-slot:default='{ active, toggle }' :value='agentData.name'>
             <v-col cols='1'>
               <v-img
-                :src='agentData.img'
+                :src='publicPath + agentData.img'
                 height='100'
                 class='pa-1'
                 @click='toggle'
@@ -32,6 +32,8 @@ export default {
   name: 'agent-select',
   data () {
     return {
+      publicPath: process.env.VUE_APP_PUBLIC_PATH,
+      
       search: '',
     }
   },
